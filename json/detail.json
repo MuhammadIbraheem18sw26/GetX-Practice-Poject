@@ -32,5 +32,13 @@
     "img": "img/images4.jpeg",
     "time": "20 Jan",
     "prize": "399"
+  },
+  {
+    "name": "Mosas",
+    "title": "Yahoo App 2",
+    "text":"We need Yahoo App but with a fun look. Our target is the user and the courier can use it.",
+    "img": "img/images4.jpeg",
+    "time": "20 Jan",
+    "prize": "399"
   }
 ]
