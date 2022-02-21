@@ -15,6 +15,25 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  List imgList = [];
+
+  _readData() async {
+    await DefaultAssetBundle.of(context)
+        .loadString("json/img.json")
+        .then((value) {
+      setState(() {
+        imgList = jsonDecode(value);
+        print(imgList);
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    _readData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -51,7 +70,7 @@ class _DetailPageState extends State<DetailPage> {
                     children: [
                       CircleAvatar(
                         radius: 40,
-                        backgroundImage: AssetImage("img/background.jpg"),
+                        backgroundImage: AssetImage(Get.arguments['img']),
                       ),
                       SizedBox(
                         width: 10,
@@ -275,7 +294,7 @@ class _DetailPageState extends State<DetailPage> {
                 )),
             //images
             Stack(children: [
-              for (int i = 0; i < 5; i++)
+              for (int i = 0; i < imgList.length; i++)
                 Positioned(
                   top: 590,
                   left: (20 + i * 35).toDouble(),
@@ -285,7 +304,7 @@ class _DetailPageState extends State<DetailPage> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
                         image: DecorationImage(
-                            image: AssetImage("img/background.jpg"),
+                            image: AssetImage(imgList[i]['img']),
                             fit: BoxFit.cover)),
                   ),
                 )

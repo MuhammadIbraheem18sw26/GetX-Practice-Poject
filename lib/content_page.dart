@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/my_home_page.dart';
+import 'package:flutter_getx/recent_context.dart';
 import 'package:get/get.dart';
 
 import 'my_detail_page.dart';
@@ -23,7 +24,6 @@ class _ContentPageState extends State<ContentPage> {
         .then((value) {
       setState(() {
         list = jsonDecode(value);
-        print(list);
       });
     });
 
@@ -32,7 +32,6 @@ class _ContentPageState extends State<ContentPage> {
         .then((value) {
       setState(() {
         info = jsonDecode(value);
-        print(info);
       });
     });
   }
@@ -266,7 +265,12 @@ class _ContentPageState extends State<ContentPage> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Color(0xFFfdc33c)),
-                    child: GestureDetector(),
+                    child: GestureDetector(
+                      onTap: () {
+                        Get.to(() => RecentContext());
+                      },
+                      child: Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                    ),
                   )
                 ],
               ),
@@ -281,8 +285,8 @@ class _ContentPageState extends State<ContentPage> {
                     child: ListView.builder(
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
-                        itemCount: 4,
-                        itemBuilder: (_, i) {
+                        itemCount: list.length,
+                        itemBuilder: (_, index) {
                           return Container(
                             width: width,
                             height: 100,
@@ -300,7 +304,7 @@ class _ContentPageState extends State<ContentPage> {
                                   CircleAvatar(
                                     radius: 40,
                                     backgroundImage:
-                                        AssetImage("img/background.jpg"),
+                                        AssetImage(list[index]['img']),
                                   ),
                                   SizedBox(
                                     width: 10,
@@ -311,10 +315,10 @@ class _ContentPageState extends State<ContentPage> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "Status",
+                                        list[index]['status'],
                                         style: TextStyle(
-                                            color: Color(0xFFfdebb2),
-                                            fontSize: 12,
+                                            color: Colors.orangeAccent,
+                                            fontSize: 18,
                                             decoration: TextDecoration.none),
                                       ),
                                       SizedBox(
@@ -324,7 +328,7 @@ class _ContentPageState extends State<ContentPage> {
                                         child: SizedBox(
                                           width: 120,
                                           child: Text(
-                                            "Text",
+                                            list[index]['text'],
                                             style: TextStyle(
                                                 color: Color(0xFF3b3f42),
                                                 fontSize: 18,
@@ -340,11 +344,11 @@ class _ContentPageState extends State<ContentPage> {
                                     width: 70,
                                     height: 70,
                                     child: Text(
-                                      "Time",
+                                      list[index]['time'],
                                       style: TextStyle(
-                                          fontSize: 10,
+                                          fontSize: 12,
                                           decoration: TextDecoration.none,
-                                          color: Color(0xFFb2b8bb)),
+                                          color: Colors.grey),
                                     ),
                                   ),
                                 ],
