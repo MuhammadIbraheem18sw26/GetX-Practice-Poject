@@ -131,24 +131,6 @@ class _ContentPageState extends State<ContentPage> {
                         decoration: TextDecoration.none),
                   ),
                   Expanded(child: Container()),
-                  Text(
-                    "Show all",
-                    style: TextStyle(
-                        color: Color(0xFFcfd5b3),
-                        fontSize: 15,
-                        decoration: TextDecoration.none),
-                  ),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color(0xFFfdc33c)),
-                    child: GestureDetector(),
-                  )
                 ],
               ),
             ),
@@ -157,7 +139,7 @@ class _ContentPageState extends State<ContentPage> {
             ),
             //list
             Container(
-              height: 220,
+              height: 250,
               child: PageView.builder(
                   controller: PageController(viewportFraction: 0.88),
                   itemCount: info.length,
@@ -252,7 +234,7 @@ class _ContentPageState extends State<ContentPage> {
                   Text(
                     "Show all",
                     style: TextStyle(
-                        color: Color(0xFFcfd5b3),
+                        color: Color(0xFFfdc33c),
                         fontSize: 15,
                         decoration: TextDecoration.none),
                   ),
@@ -269,7 +251,7 @@ class _ContentPageState extends State<ContentPage> {
                       onTap: () {
                         Get.to(() => RecentContext());
                       },
-                      child: Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                      child: Icon(Icons.arrow_forward_ios, color: Colors.white),
                     ),
                   )
                 ],

@@ -37,22 +37,36 @@ class _RecentContextState extends State<RecentContext> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xFF69c5df),
+        leading: IconButton(
+          onPressed: () => Get.back(),
+          icon: Icon(Icons.arrow_back_ios),
+        ),
+      ),
       backgroundColor: Color(0xffcbe6f6),
       body: Container(
-        margin: EdgeInsets.all(10),
+        margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
         child: Column(
           children: [
             Expanded(
                 child: SingleChildScrollView(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   for (int i = 0; i < info.length; i++)
                     Container(
+                      padding: EdgeInsets.fromLTRB(10, 0, 0, 10),
                       height: 320,
                       child: GestureDetector(
                         onTap: () {
-                          print('Click');
+                          Get.toNamed(DetailPage.detail, arguments: {
+                            'name': info[i]['name'].toString(),
+                            'title': info[i]['title'].toString(),
+                            'prize': info[i]['prize'].toString(),
+                            'time': info[i]['time'].toString(),
+                            'text': info[i]['text'].toString(),
+                            'img': info[i]['img'].toString(),
+                          });
                         },
                         child: Container(
                           padding: const EdgeInsets.only(left: 20, top: 20),

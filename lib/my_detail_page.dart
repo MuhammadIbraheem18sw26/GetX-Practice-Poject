@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter_getx/detail_controller.dart';
 import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ class DetailPage extends StatefulWidget {
 
 class _DetailPageState extends State<DetailPage> {
   List imgList = [];
+  List info = [];
 
   _readData() async {
     await DefaultAssetBundle.of(context)
@@ -23,7 +25,14 @@ class _DetailPageState extends State<DetailPage> {
         .then((value) {
       setState(() {
         imgList = jsonDecode(value);
-        print(imgList);
+      });
+    });
+
+    await DefaultAssetBundle.of(context)
+        .loadString("json/detail.json")
+        .then((value) {
+      setState(() {
+        info = jsonDecode(value);
       });
     });
   }
@@ -39,6 +48,9 @@ class _DetailPageState extends State<DetailPage> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     int _currentIndex = 0;
+    bool check = false;
+
+    final DetailController detailControllerFav = Get.put(DetailController());
     return Scaffold(
       body: Container(
         color: Color(0xFFc5e5f3),
@@ -48,8 +60,10 @@ class _DetailPageState extends State<DetailPage> {
                 top: 50,
                 left: 10,
                 child: IconButton(
+                  hoverColor: Color(0xFF69ffff),
                   onPressed: () => Get.toNamed(ContentPage.contentPage),
-                  icon: Icon(Icons.arrow_back_ios),
+                  icon: Icon(Icons.home_outlined,
+                      size: 40, color: Color(0xFF69c5df)),
                 )),
             Positioned(
               top: 120,
@@ -133,7 +147,7 @@ class _DetailPageState extends State<DetailPage> {
               top: 250,
               left: 0,
               width: width,
-              height: 250,
+              height: 280,
               child: Container(
                 margin: const EdgeInsets.only(left: 25, right: 25),
                 width: width,
@@ -288,7 +302,7 @@ class _DetailPageState extends State<DetailPage> {
                               color: Colors.black),
                           children: [
                         TextSpan(
-                            text: "(11)",
+                            text: info.length.toString(),
                             style: TextStyle(color: Color(0xFFfbc33e)))
                       ])),
                 )),
@@ -316,13 +330,16 @@ class _DetailPageState extends State<DetailPage> {
                 child: Row(
                   children: [
                     Container(
-                        width: 60,
-                        height: 60,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Color(0xFFfbc33e)),
-                        child:
-                            Icon(Icons.favorite_border, color: Colors.white)),
+                      width: 60,
+                      height: 60,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Color(0xFFfbc33e)),
+                      child: IconButton(
+                          onPressed: () => detailControllerFav.favCounter(),
+                          icon:
+                              Icon(Icons.favorite_border, color: Colors.white)),
+                    ),
                     SizedBox(
                       width: 10,
                     ),
