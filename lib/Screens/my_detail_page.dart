@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:flutter_getx/detail_controller.dart';
+import '../Controller/detail_controller.dart';
 import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

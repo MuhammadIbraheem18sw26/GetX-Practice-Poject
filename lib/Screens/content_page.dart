@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_getx/my_home_page.dart';
-import 'package:flutter_getx/recent_context.dart';
+import 'package:flutter_getx/Screens/my_home_page.dart';
+import 'package:flutter_getx/Screens/recent_context.dart';
 import 'package:get/get.dart';
 
 import 'my_detail_page.dart';
