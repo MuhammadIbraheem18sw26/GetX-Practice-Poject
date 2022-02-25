@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Cards extends StatelessWidget {
-  Cards({required this.info, required this.width, required this.index});
-  final List info;
+  Cards({required this.list, required this.width, required this.index});
+  final List list;
   final double width;
   final int index;
 
@@ -22,7 +22,7 @@ class Cards extends StatelessWidget {
               child: Row(
             children: [
               Text(
-                info[index]['title'],
+                list[index]['title'],
                 style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.w500,
@@ -35,7 +35,7 @@ class Cards extends StatelessWidget {
           Container(
             width: width,
             child: Text(
-              info[index]['text'],
+              list[index]['text'],
               style: TextStyle(fontSize: 20, color: Color(0xFFb8eefc)),
             ),
           ),
@@ -54,7 +54,7 @@ class Cards extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(25),
                       image: DecorationImage(
-                          image: AssetImage(info[i]['img']),
+                          image: AssetImage(list[i]['img']),
                           fit: BoxFit.cover)),
                 ),
               )

@@ -155,7 +155,7 @@ class _ContentPageState extends State<ContentPage> {
                           'img': info[i]['img'].toString(),
                         });
                       },
-                      child: Cards(index: i, info: info, width: width),
+                      child: Cards(index: i, list: info, width: width),
                     );
                   }),
             ),
