@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/Screens/content_page.dart';
 import 'package:get/get.dart';
+import 'package:flutter_getx/utils/constants.dart';
 
 class MyHomePage extends StatefulWidget {
   static String homepage = '/';
@@ -67,11 +68,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: 70,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Color(0xFffbc33e)),
+                        color: kButtonColor),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         elevation: 0,
-                        primary: Color(0xFFfbc33e),
+                        primary: kButtonColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),

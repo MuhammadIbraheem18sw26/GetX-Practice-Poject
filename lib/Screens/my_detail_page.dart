@@ -3,10 +3,7 @@ import '../Controller/detail_controller.dart';
 import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 import 'content_page.dart';
-import 'my_home_page.dart';
 
 class DetailPage extends StatefulWidget {
   static String detail = '/detail/';
