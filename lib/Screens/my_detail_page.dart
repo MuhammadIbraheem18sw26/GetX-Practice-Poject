@@ -81,7 +81,9 @@ class _DetailPageState extends State<DetailPage> {
                     children: [
                       CircleAvatar(
                         radius: 40,
-                        backgroundImage: AssetImage(Get.arguments['img']),
+                        backgroundImage: AssetImage(Get.arguments['img'] == null
+                            ? info[0]['img']
+                            : Get.arguments['img']),
                       ),
                       SizedBox(
                         width: 10,

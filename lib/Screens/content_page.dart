@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_getx/Screens/recent_context.dart';
 import 'package:get/get.dart';
 import '../Components/card_component.dart';
+import '../Components/header_bar.dart';
 
 import 'my_detail_page.dart';
 
@@ -18,6 +19,7 @@ class ContentPage extends StatefulWidget {
 class _ContentPageState extends State<ContentPage> {
   List list = [];
   List info = [];
+
   _readData() async {
     await DefaultAssetBundle.of(context)
         .loadString("json/recent.json")
@@ -54,67 +56,7 @@ class _ContentPageState extends State<ContentPage> {
         child: Column(
           children: [
             //james smith
-            Container(
-              width: width,
-              height: 100,
-              margin: const EdgeInsets.only(left: 25, right: 25),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Color(0xFFebf8fd),
-              ),
-              child: Container(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: Row(
-                  children: [
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundImage: AssetImage("img/background.jpg"),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "James Smith",
-                          style: TextStyle(
-                              color: Color(0xFF3b3f42),
-                              fontSize: 18,
-                              decoration: TextDecoration.none),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          "Top Level",
-                          style: TextStyle(
-                              color: Color(0xFFfdebb2),
-                              fontSize: 12,
-                              decoration: TextDecoration.none),
-                        ),
-                      ],
-                    ),
-                    Expanded(child: Container()),
-                    Container(
-                      width: 70,
-                      height: 70,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Color(0xFFf3fafc)),
-                      child: Center(
-                        child: Icon(
-                          Icons.notifications,
-                          color: Color(0xFF69c5df),
-                          size: 30,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            HeaderBar(width: width, list: info),
             SizedBox(
               height: 30,
             ),
